@@ -1,3 +1,5 @@
+import AssignmentsNav from "@/components/AssignmentsNav";
+
 const Assignment3 = () => {
   const people = [
     { name: "John", age: 17 },
@@ -10,13 +12,14 @@ const Assignment3 = () => {
     return person.age > 18;
   });
   return (
-    <div>
-      <div>Filter Objects by Property</div>
+    <div className="flex flex-col items-center">
+      <h1 className="font-bold text-2xl">3. Filter Objects by Property</h1>
       <ul className="list-disc pl-5">
-        {result.map((person) => {
-          return <li>{`${person.name} : ${person.age}`}</li>;
+        {result.map((person, i) => {
+          return <li key={"a3-" + i}>{`${person.name} : ${person.age}`}</li>;
         })}
       </ul>
+      <AssignmentsNav />
     </div>
   );
 };
