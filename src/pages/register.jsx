@@ -16,48 +16,69 @@ const Register = () => {
     membership: "",
   });
 
-  const handleFirstName = (e) => {
-    setData((d) => ({ ...d, firstName: e.target.value }));
-  };
-  const handleLastName = (e) => {
-    setData((d) => ({ ...d, lastName: e.target.value }));
-  };
-  const handleAddress = (e) => {
-    setData((d) => ({ ...d, address: e.target.value }));
-  };
-  const handleAddress2 = (e) => {
-    setData((d) => ({ ...d, address2: e.target.value }));
-  };
-  const handleCity = (e) => {
-    setData((d) => ({ ...d, city: e.target.value }));
-  };
-  const handleState = (e) => {
-    setData((d) => ({ ...d, state: e.target.value }));
-  };
-  const handleZip = (e) => {
-    setData((d) => ({ ...d, zip: e.target.value }));
-  };
-  const handlePhone = (e) => {
-    setData((d) => ({ ...d, phone: e.target.value }));
-  };
-  const handleEmail = (e) => {
-    setData((d) => ({ ...d, email: e.target.value }));
-  };
-  const handleMembership = (e) => {
-    let type;
-    switch (e.target.id) {
-      case "membership-s":
-        type = "Standard";
-        break;
-      case "membership-p":
-        type = "Premium";
-        break;
-      case "membership-u":
-        type = "Ultimate";
-        break;
+  const handleChange = (e, field) => {
+    if (field == "membership") {
+      let type;
+      switch (e.target.id) {
+        case "membership-s":
+          type = "Standard";
+          break;
+        case "membership-p":
+          type = "Premium";
+          break;
+        case "membership-u":
+          type = "Ultimate";
+          break;
+      }
+      setData((d) => ({ ...d, membership: type }));
+    } else {
+      const copy = { ...data };
+      copy[field] = e.target.value;
+      setData(copy);
     }
-    setData((d) => ({ ...d, membership: type }));
   };
+  // const handleFirstName = (e) => {
+  //   setData((d) => ({ ...d, firstName: e.target.value }));
+  // };
+  // const handleLastName = (e) => {
+  //   setData((d) => ({ ...d, lastName: e.target.value }));
+  // };
+  // const handleAddress = (e) => {
+  //   setData((d) => ({ ...d, address: e.target.value }));
+  // };
+  // const handleAddress2 = (e) => {
+  //   setData((d) => ({ ...d, address2: e.target.value }));
+  // };
+  // const handleCity = (e) => {
+  //   setData((d) => ({ ...d, city: e.target.value }));
+  // };
+  // const handleState = (e) => {
+  //   setData((d) => ({ ...d, state: e.target.value }));
+  // };
+  // const handleZip = (e) => {
+  //   setData((d) => ({ ...d, zip: e.target.value }));
+  // };
+  // const handlePhone = (e) => {
+  //   setData((d) => ({ ...d, phone: e.target.value }));
+  // };
+  // const handleEmail = (e) => {
+  //   setData((d) => ({ ...d, email: e.target.value }));
+  // };
+  // const handleMembership = (e) => {
+  //   let type;
+  //   switch (e.target.id) {
+  //     case "membership-s":
+  //       type = "Standard";
+  //       break;
+  //     case "membership-p":
+  //       type = "Premium";
+  //       break;
+  //     case "membership-u":
+  //       type = "Ultimate";
+  //       break;
+  //   }
+  //   setData((d) => ({ ...d, membership: type }));
+  // };
 
   const submit = () => {
     console.log(data);
@@ -79,7 +100,7 @@ const Register = () => {
               name="first-name"
               id="first-name"
               value={data.firstName}
-              onChange={handleFirstName}
+              onChange={(event) => handleChange(event, "firstName")}
               className="border-2 py-0 px-3 rounded-md"
             />
           </div>
@@ -92,7 +113,7 @@ const Register = () => {
               name="last-name"
               id="last-name"
               value={data.lastName}
-              onChange={handleLastName}
+              onChange={(event) => handleChange(event, "lastName")}
               className="border-2 py-0 px-3 rounded-md"
             />
           </div>
@@ -107,7 +128,7 @@ const Register = () => {
               name="address"
               id="address"
               value={data.address}
-              onChange={handleAddress}
+              onChange={(event) => handleChange(event, "address")}
               className="border-2 py-0 px-3 rounded-md"
             />
           </div>
@@ -118,7 +139,7 @@ const Register = () => {
               name="address-2"
               id="address-2"
               value={data.address2}
-              onChange={handleAddress2}
+              onChange={(event) => handleChange(event, "address2")}
               className="border-2 py-0 px-3 rounded-md"
             />
           </div>
@@ -133,7 +154,7 @@ const Register = () => {
               name="city"
               id="city"
               value={data.city}
-              onChange={handleCity}
+              onChange={(event) => handleChange(event, "city")}
               className="border-2 py-0 px-3 rounded-md"
             />
           </div>
@@ -148,7 +169,7 @@ const Register = () => {
               name="state"
               id="state"
               value={data.state}
-              onChange={handleState}
+              onChange={(event) => handleChange(event, "state")}
               className="border-2 py-0 px-3 rounded-md w-[200px]"
             />
           </div>
@@ -161,7 +182,7 @@ const Register = () => {
               name="zip"
               id="zip"
               value={data.zip}
-              onChange={handleZip}
+              onChange={(event) => handleChange(event, "zip")}
               className="border-2 py-0 px-3 rounded-md w-[100px]"
             />
           </div>
@@ -176,7 +197,7 @@ const Register = () => {
               name="phone"
               id="phone"
               value={data.phone}
-              onChange={handlePhone}
+              onChange={(event) => handleChange(event, "phone")}
               className="border-2 py-0 px-3 rounded-md"
             />
           </div>
@@ -191,7 +212,7 @@ const Register = () => {
               name="email"
               id="email"
               value={data.email}
-              onChange={handleEmail}
+              onChange={(event) => handleChange(event, "email")}
               className="border-2 py-0 px-3 rounded-md"
             />
           </div>
@@ -208,7 +229,7 @@ const Register = () => {
                   name="membership"
                   id="membership-s"
                   checked={data.membership == "Standard"}
-                  onChange={handleMembership}
+                  onChange={(event) => handleChange(event, "membership")}
                   className="mx-1"
                 />
                 <label htmlFor="membership-s">Standard</label>
@@ -219,7 +240,7 @@ const Register = () => {
                   name="membership"
                   id="membership-p"
                   checked={data.membership == "Premium"}
-                  onChange={handleMembership}
+                  onChange={(event) => handleChange(event, "membership")}
                   className="mx-1"
                 />
                 <label htmlFor="membership-p">Premium</label>
@@ -230,7 +251,7 @@ const Register = () => {
                   name="membership"
                   id="membership-u"
                   checked={data.membership == "Ultimate"}
-                  onChange={handleMembership}
+                  onChange={(event) => handleChange(event, "membership")}
                   className="mx-1"
                 />
                 <label htmlFor="membership-u">Ultimate</label>
